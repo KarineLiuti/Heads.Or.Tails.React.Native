@@ -14,9 +14,17 @@ export default class OtherGames extends Component {
   }
 
   componentWillMount() {
-    const getResult = Math.floor(Math.random() * 2);
+    let randomValues = [];
+    let i = 49;
 
-    let result = getResult === 0 ? 'heads' : 'tails';
+    while (i >= 0) {
+      randomValues.push(i);
+      i--;
+    }
+    
+    const getIndex = Math.floor(Math.random() * 50);
+
+    let result = randomValues[getIndex] <= 24 ? 'heads' : 'tails';
 
     this.setState({ result });
   }
@@ -31,7 +39,8 @@ export default class OtherGames extends Component {
           </Text>
         </View>
       );
-    } else {
+    }
+
       return (
         <View style={{ flex: 1, backgroundColor: '#61BD8C', padding: 30 }}>
           <Image source={tails} />
@@ -40,7 +49,6 @@ export default class OtherGames extends Component {
           </Text>
         </View>
       );
-    }
 	}
 }
 
